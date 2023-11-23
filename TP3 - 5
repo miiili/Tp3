@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <math.h>
+
+double funcion(double x) {
+	return sin(x);
+}
+
+double derivada(double x) {
+	return cos(x);
+}
+
+int main() {
+	double inicio = 0.0;
+	double fin = 4 * M_PI;
+	int valores = 50;
+	double paso = (fin - inicio) / (valores - 1);
+	
+	printf("Valores de la funcion y su derivada:\n");
+	printf("x\t  y = sin(x)\t  dy/dx = cos(x)\n");
+	
+	
+	for (int i = 0; i < valores; ++i) {
+		double x = inicio + i * paso;
+		double y = funcion(x);
+		double dydx = derivada(x);
+		printf("%.4f\t  %.4f\t  %.4f\n", x, y, dydx);
+	}
+	
+	return 0;
+}

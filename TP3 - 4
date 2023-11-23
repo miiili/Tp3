@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <math.h>
+
+#define EPSILON 1e-6 
+
+double funcion(double x) {
+	return sin(x) * sin(x);
+}
+
+double derivada(double punto) {
+	double h = EPSILON;
+	double derivada;
+	
+	
+	derivada = (funcion(punto + h) - funcion(punto - h)) / (2 * h);
+	
+	return derivada;
+}
+
+int main() {
+	double punto;
+	printf("Ingresa el valor del punto: ");
+	scanf("%lf", &punto);
+	
+	double resultado =derivada(punto);
+	printf("La derivada de y = sin^2(x) es: %.6lf\n", resultado);
+	
+	return 0;
+}
+

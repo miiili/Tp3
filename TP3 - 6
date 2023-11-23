@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <math.h>
+
+#define INTERVALOS 100000
+
+double funcion(double x) {
+	return sin(x) * sin(x);
+}
+
+double rectangulos(double x1, double x2, int intervalos) {
+	double base = (x2 - x1) / intervalos;
+	double total = 0.0;
+	
+	for (int i = 0; i < intervalos; ++i) {
+		double altura = funcion(x1 + i * base);
+		total += base * altura;
+	}
+	
+	return total;
+}
+
+int main() {
+	double x1, x2;
+	
+	printf("Ingresa el valor de x1: ");
+	scanf("%lf", &x1);
+	printf("Ingresa el valor de x2: ");
+	scanf("%lf", &x2);
+	
+	double area = rectangulos(x1, x2, INTERVALOS);
+	printf("El area bajo la curva entre x1=%.2lf y x2=%.2lf es: %.6lf\n", x1, x2, area);
+	
+	return 0;
+}
